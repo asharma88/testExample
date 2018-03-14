@@ -6,3 +6,9 @@
 - Recursive File/Directory Parser (Note, donot point this as C:\ - StackOverflow) - /src/test/java/uk/gov/dvla/utils/FileDirParseService.java	 
 
 Ps. I've never used Cucumber JVM, always used Behave in Python.
+
+Questions/Statements:
+
+- I didn't get around to impelmented CSV reading.
+- It would be interesting to find out why you'd want to use XLS/CSV files when using Cucumber files. I mean you can keep all the test inputs and the results all in one place under examples.
+- I was able to send a POST request to http://vehicleenquiry.service.gov.uk/ConfirmVehicle?Vrm=af51klk&Continue= which returns the page, could be possible to read the page into a HTML DOM parser and Assert the fields (depending on whether you're trying to verify the data or the platform).
