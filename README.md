@@ -1,15 +1,15 @@
-# Example Test Framework using Java, Cucumber & Log4j
+# Example Test Framework using Java, Cucumber, Selenium & Log4j
 
-- Uses POM - /src/main/java/uk/gov/dvla/pageObjects/
-- Uses Cucumber JVM - src/test/java/uk/gov/dvla/getvehicleinfo
-- Feature files - /Features/
-- Recursive File/Directory Parser (Note, do not point this as C:\ - StackOverflow) - /src/test/java/uk/gov/dvla/utils/FileDirParseService.java	
+This is a  test project which utilises  Cucumber, Java, Selenium and Log4j for testing `http://vehicleenquiry.service.gov.uk/`
 
-Ps. I've never used Cucumber JVM, always used Behave in Python (similar BDD framework).
 
-Questions/Statements:
+# Run Instructions
+- Checkout repository
+- Ensure you have Geckodriver on your system path.
+- Run `mvn clean;mvn test`
 
-- I didn't get around to impelmented CSV reading.
-- Reading the xls in the Before Scenario section seems a bit dirty, probably worth looking at a more efficient way of doing this. I tried to use BeforeClass and found that is not supported in Cuccumber JVM.
-- It would be interesting to find out why you'd want to use XLS/CSV files when using Cucumber files. I mean you can keep all the test inputs and the results all in one place under examples.
-- I was able to send a POST request to http://vehicleenquiry.service.gov.uk/ConfirmVehicle?Vrm=af51klk&Continue= which returns the page, could be possible to read the page into a HTML DOM parser and Assert the fields (depending on whether you're trying to verify the data or the platform).
+# TODO/Notes
+- TODO : Code comments
+- TODO : Implement CSV reading.
+- TODO : Move reading testdata from BeforeScenario to a static function which is called in the beforeScenario, however it runs once if the testdata HashMap is empty.
+- Sending a POST request to `http://vehicleenquiry.service.gov.uk/ConfirmVehicle?Vrm=af51klk&Continue=` which returns the page, might be more efficient to use a html DOM parser and extracting the data and asserting. (This really depends on whether we're testing the system or we're testing the data.)
