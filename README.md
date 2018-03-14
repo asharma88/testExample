@@ -9,7 +9,7 @@ This is a  test project which utilises  Cucumber, Java, Selenium and Log4j for t
 - Run `mvn clean;mvn test`
 
 # Structure
-- Logs - /logs/test_run.log (left in repo on purpose so show log examples)
+- Logs - /logs/test_run.log (left in repo on purpose to show log examples)
 - POM - /src/main/java/uk/gov/dvla/pageObjects/*
 - Cucumber - src/test/java/uk/gov/dvla/getvehicleinfo/*
 - Feature - /Features/VehicleInfo.feature
