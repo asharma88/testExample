@@ -8,7 +8,17 @@ This is a  test project which utilises  Cucumber, Java, Selenium and Log4j for t
 - Ensure you have Geckodriver on your system path.
 - Run `mvn clean;mvn test`
 
+# Structure
+- Logs - /logs/test_run.log
+- POM - /src/main/java/uk/gov/dvla/pageObjects/*
+- Cucumber - src/test/java/uk/gov/dvla/getvehicleinfo/*
+- Feature - /Features/VehicleInfo.feature
+- Recursive File/Directory Parser - /src/test/java/uk/gov/dvla/utils/FileDirParseService.java
+- Logging - /src/test/java/log4j.properties
+- ExcelUtils - /src/test/java/uk/gov/dvla/utils/ExcelReader.java
+
 # TODO/Notes
+- TODO : Add factory function to return WebDriver depening on arguments passed (for example, Chrome or Mozilla, etc.)
 - TODO : Code comments
 - TODO : Implement CSV reading.
 - TODO : Move reading testdata from BeforeScenario to a static function which is called in the beforeScenario, however it runs once if the testdata HashMap is empty.
