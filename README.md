@@ -1,4 +1,4 @@
-# Example Test Framework using Java, Cucumber, Selenium & Log4j
+# Test Framework using Java, Cucumber, Selenium & Log4j
 
 This is a  test project which utilises  Cucumber, Java, Selenium and Log4j for testing `http://vehicleenquiry.service.gov.uk/`
 
