@@ -33,7 +33,7 @@ public class VehicleInfoTests {
     public void beforeScenario(Scenario scenario){
 		this.driver = new FirefoxDriver();
 		String testDataPath = System.getProperty("user.dir")+"/src/test/resources/uk/gov/dvla/getvehicleinfo/";
-		HashMap<String, TestFileObject> fileMap = FileDirParseService.getFileListMap(
+		HashMap<String, TestFileObject> fileMap = FileDirParseService.getInstance().getFileListMap(
 				testDataPath, 
 				new String[] {"csv", "xls", "xlsx"}, 
 				new String[] {

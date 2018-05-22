@@ -9,24 +9,35 @@ import java.util.HashMap;
 
 public class FileDirParseService {
 
-	private static FileNameMap fileNameMap;
+	private FileNameMap fileNameMap;
+	private static FileDirParseService instance = null;
+	
+	private FileDirParseService() {
+		
+	}
+	
+	public static FileDirParseService getInstance() {
+		if(instance == null) {
+	         instance = new FileDirParseService();
+	      }
+	      return instance;
+		
+	}
 
-	private FileDirParseService() {}
-
-	private static void getFileDirListWithExt(String basePath, String[] allowedExts, String[] allowedMimeTypes, HashMap<String, TestFileObject> resultFileMap) {
+	private void getFileDirListWithExt(String basePath, String[] allowedExts, String[] allowedMimeTypes, HashMap<String, TestFileObject> resultFileMap) {
 		File basePathDir = new File(basePath);
 		File[] allFiles = basePathDir.listFiles();
 		for (File file : allFiles) {
 			if (file.isDirectory()) {
-				FileDirParseService.getFileDirListWithExt(file.getPath(), allowedExts, allowedMimeTypes, resultFileMap);
+				this.getFileDirListWithExt(file.getPath(), allowedExts, allowedMimeTypes, resultFileMap);
 			} else {
 				String fileExt = file.getName().substring(file.getName().lastIndexOf(".")+1);
-				String fileMimeType = FileDirParseService.getMimeType(file.getPath());
+				String fileMimeType = this.getMimeType(file.getPath());
 				if (Arrays.asList(allowedExts).contains(fileExt) | Arrays.asList(allowedMimeTypes).contains(fileMimeType)) {
 					String fileSize = (file.length() / 1024) + " KB";
 					resultFileMap.put(
 							file.getName(),
-							new TestFileObject(file.getName(), FileDirParseService.getMimeType(file.getPath()),
+							new TestFileObject(file.getName(), this.getMimeType(file.getPath()),
 									fileExt, fileSize, file.getAbsolutePath())
 							);
 				}
@@ -35,18 +46,18 @@ public class FileDirParseService {
 		}
 	}
 
-	private static String getMimeType(String path) {
-		if (FileDirParseService.fileNameMap == null) {
-			FileDirParseService.fileNameMap = URLConnection.getFileNameMap();
+	private String getMimeType(String path) {
+		if (this.fileNameMap == null) {
+			this.fileNameMap = URLConnection.getFileNameMap();
 		}
-		String mimeType = fileNameMap.getContentTypeFor(path);
+		String mimeType = this.fileNameMap.getContentTypeFor(path);
 		if (mimeType == null) {
 			return "";
 		}
 		return mimeType;
 	}
 
-	public static HashMap<String, TestFileObject> getFileListMap(String path, String[] allowedExts, String[] allowedMimes) {
+	public HashMap<String, TestFileObject> getFileListMap(String path, String[] allowedExts, String[] allowedMimes) {
 		HashMap<String, TestFileObject> resultFileMap = new HashMap<String, TestFileObject>();
 		try {
 			File f = new File(path);

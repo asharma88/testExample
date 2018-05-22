@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LandingPage extends BasePage {
 
-	@FindBy(how = How.XPATH, using = "//p[@id='get-started']/a[@class='pub-c-button pub-c-button--start']")
+	@FindBy(how = How.XPATH, using = "//p[@id='get-started']/a[@class='gem-c-button gem-c-button--start']")
 	private WebElement getStarted;
 	
 	public LandingPage(WebDriver driver) {

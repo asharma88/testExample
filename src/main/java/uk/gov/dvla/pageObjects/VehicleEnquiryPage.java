@@ -26,7 +26,7 @@ public class VehicleEnquiryPage extends BasePage {
 	}
 
 	public void fillSearchBox(String registrationPlate) {
-		this.fillTextBox(registrationPlate, searchBox, 5);
+		this.fillTextBox(registrationPlate, searchBox, 10);
 	}
 
 	public InitialResultPage searchForResults() {
